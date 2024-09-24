@@ -3,6 +3,8 @@ FROM osrf/ros:humble-desktop-full
 
 MAINTAINER Gerard Harkema <ga.harkema@avans.nl>
 
+ENV DEBIAN_FRONTEND noninteractive
+
 SHELL ["/bin/bash", "-c"]
 
 
@@ -118,5 +120,5 @@ RUN echo "source /opt/ros/$ROS_DISTRO/setup.bash" >> ~/.bashrc
 EXPOSE 3000 8888
 
 
-ENTRYPOINT [ "/entrypoint.sh" ]
+#ENTRYPOINT [ "/entrypoint.sh" ]
 CMD [ "sudo", "-E", "/usr/local/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]
