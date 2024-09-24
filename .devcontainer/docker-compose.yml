@@ -1,4 +1,4 @@
-version: '2.3'
+version: '3'
 services:
   xserver:
     image: devrt/xserver
@@ -14,11 +14,10 @@ services:
   workspace:
     # env_file:
     #   - .env
+    build: 
+      context: .
+      dockerfile: Dockerfile
     image: my-ros-devcontainer-vscode:humble-desktop
-    #build: 
-    #  context: .
-    #  dockerfile: Dockerfile
-    #  tag: my-ros-devcontainer-vscode:humble-desktop
     ipc: host
     security_opt:
     - seccomp:unconfined

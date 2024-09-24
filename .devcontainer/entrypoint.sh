@@ -16,7 +16,7 @@ ln -sfn /workspace /home/developer/workspace
 
 source /opt/ros/$ROS_DISTRO/setup.bash
 
-mkdir -p /workspace/src && cd /workspace/src
+mkdir -p /workspace/src && cd /workspace && colcon build 
 #mkdir -p /workspace/src && cd /workspace/src && catkin_init_workspace || true
 
 cd /home/developer
