@@ -1,0 +1,20 @@
+{
+	"name": "ROS-Humble devcontainer for vscode",
+	"dockerComposeFile": [
+		"docker-compose.yml"
+	],
+	"service": "workspace",
+	"workspaceFolder": "/workspace",
+	"shutdownAction": "stopCompose",
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"ms-vscode.cpptools",
+				"ms-python.python",
+				"ms-azuretools.vscode-docker",
+				"ms-iot.vscode-ros"
+			]
+		}		
+	}
+    //"appPort": [80],
+}
