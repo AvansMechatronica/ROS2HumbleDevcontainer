@@ -1,12 +1,13 @@
 # Basis image: ROS 2 Humble met desktop full
-FROM osrf/ros:humble-desktop-full
+ARG BASE_IMAGE=osrf/ros:humble-desktop-full
+
+FROM $BASE_IMAGE
 
 MAINTAINER Gerard Harkema <ga.harkema@avans.nl>
 
-ENV DEBIAN_FRONTEND noninteractive
+ENV DEBIAN_FRONTEND=noninteractive
 
 SHELL ["/bin/bash", "-c"]
-
 
 # install depending packages
 RUN apt-get update && apt-get upgrade -y && \
@@ -83,6 +84,23 @@ RUN dos2unix /entrypoint.sh
 
 #COPY --from=xsdcache /opt/xsd /opt/xsd
 
+RUN apt-get update && apt-get install -y \
+    ros-$ROS_DISTRO-moveit \
+	ros-$ROS_DISTRO-controller-manager-msgs \
+	ros-$ROS_DISTRO-hardware-interface \
+	ros-$ROS_DISTRO-joint-state-broadcaster \
+	ros-$ROS_DISTRO-joint-trajectory-controller \
+	ros-$ROS_DISTRO-joint-state-publisher \
+	ros-$ROS_DISTRO-gazebo-ros2-control \
+	ros-$ROS_DISTRO-gazebo-plugins \
+	ros-$ROS_DISTRO-control-toolbox \
+	ros-$ROS_DISTRO-controller-manager \
+	ros-$ROS_DISTRO-moveit-servo \
+	ros-$ROS_DISTRO-gazebo-ros \
+    && rm -rf /var/lib/apt/lists/*
+
+RUN curl -sSL http://get.gazebosim.org | sh
+
 USER developer
 WORKDIR /home/developer
 
@@ -119,6 +137,5 @@ RUN echo "source /opt/ros/$ROS_DISTRO/setup.bash" >> ~/.bashrc
 
 EXPOSE 3000 8888
 
-
-#ENTRYPOINT [ "/entrypoint.sh" ]
+ENTRYPOINT [ "/entrypoint.sh" ]
 CMD [ "sudo", "-E", "/usr/local/bin/supervisord", "-c", "/etc/supervisor/supervisord.conf"]

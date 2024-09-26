@@ -1,7 +1,8 @@
 {
 	"name": "ROS-Humble devcontainer for vscode",
 	"dockerComposeFile": [
-		"docker-compose.yml"
+		"docker-compose-windows.yml"
+//		"docker-compose-linux.yml"
 	],
 	"service": "workspace",
 	"workspaceFolder": "/workspace",

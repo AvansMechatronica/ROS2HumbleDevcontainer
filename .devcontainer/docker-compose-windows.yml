@@ -1,0 +1,22 @@
+version: '3'
+services:
+
+  workspace:
+    # env_file:
+    #   - .env
+    build: 
+      context: .
+      dockerfile: Dockerfile
+    image: my-ros-devcontainer-vscode:humble-desktop
+    ipc: host
+    security_opt:
+    - seccomp:unconfined
+    ports:
+    - "3001:3000"
+    - "3002:8888"
+    volumes:
+    - workspace:/workspace
+    environment:
+    - DISPLAY=host.docker.internal:0.0
+volumes:
+  workspace:
