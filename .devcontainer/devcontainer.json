@@ -1,9 +1,10 @@
 {
 	"name": "ROS-Humble devcontainer for vscode",
 	"dockerComposeFile": [
-		"docker-compose-windows.yml"
-//		"docker-compose-linux.yml"
+//		"docker-compose-windows.yml"
+		"docker-compose-linux.yml"
 	],
+//	"postCreateCommand": "docker buildx use default",
 	"service": "workspace",
 	"workspaceFolder": "/workspace",
 	"shutdownAction": "stopCompose",
@@ -17,5 +18,8 @@
 			]
 		}		
 	}
+//	"mounts": [
+//        "source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind,consistency=cached"
+//      ],
     //"appPort": [80],
 }

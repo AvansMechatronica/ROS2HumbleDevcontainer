@@ -2,7 +2,7 @@
 
 dist=humble-desktop-full
 
-docker build --build-arg BASE_IMAGE=osrf/ros:$dist -f Dockerfile -t my-ros-devcontainer-vscode:$dist .
+docker build --build-arg BASE_IMAGE=$dist -f Dockerfile -t my-ros-devcontainer-vscode:$dist .
 
 #for dist in melodic
 #do
