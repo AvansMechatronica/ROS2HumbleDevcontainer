@@ -1,5 +1,6 @@
 {
-	"name": "ROS-Humble devcontainer for vscode",
+	"name": "ROS devcontainer for vscode",
+//	"preCreateCommand": "./detect_os.sh",
 	"dockerComposeFile": [
 //		"docker-compose-windows.yml"
 		"docker-compose-linux.yml"
@@ -22,4 +23,5 @@
 //        "source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind,consistency=cached"
 //      ],
     //"appPort": [80],
+
 }

@@ -85,22 +85,28 @@ RUN dos2unix /entrypoint.sh
 
 RUN apt-get install -y \
     ros-$ROS_DISTRO-moveit \
-	ros-$ROS_DISTRO-controller-manager-msgs \
-	ros-$ROS_DISTRO-hardware-interface \
-	ros-$ROS_DISTRO-joint-state-broadcaster \
-	ros-$ROS_DISTRO-joint-trajectory-controller \
-	ros-$ROS_DISTRO-joint-state-publisher \
-	ros-$ROS_DISTRO-control-toolbox \
-	ros-$ROS_DISTRO-controller-manager \
-	ros-$ROS_DISTRO-moveit-servo 
+    ros-$ROS_DISTRO-moveit-ros-visualization \
+    ros-$ROS_DISTRO-controller-manager-msgs \
+    ros-$ROS_DISTRO-hardware-interface \
+    ros-$ROS_DISTRO-joint-state-broadcaster \
+    ros-$ROS_DISTRO-joint-trajectory-controller \
+    ros-$ROS_DISTRO-joint-state-publisher \
+    ros-$ROS_DISTRO-control-toolbox \
+    ros-$ROS_DISTRO-controller-manager \
+    ros-$ROS_DISTRO-desktop \
+    ros-$ROS_DISTRO-moveit-servo 
+#Add own ROS Packeges here
 
 RUN curl -sSL http://get.gazebosim.org | sh
 
 RUN apt-get install -y \
-    ros-$ROS_DISTRO-moveit \
-	ros-$ROS_DISTRO-gazebo-ros2-control \
-	ros-$ROS_DISTRO-gazebo-plugins \
-	ros-$ROS_DISTRO-gazebo-ros 
+    ros-$ROS_DISTRO-gazebo-msgs \
+    ros-$ROS_DISTRO-gazebo-ros2-control \
+    ros-$ROS_DISTRO-gazebo-plugins \
+    ros-$ROS_DISTRO-gazebo-ros 
+
+# Uncoment for using UR Robots
+#RUN apt-get install -y ros-$ROS_DISTRO-ur
 
 
 RUN rm -rf /var/lib/apt/lists/*
