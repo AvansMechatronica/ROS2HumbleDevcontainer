@@ -1,6 +1,10 @@
 {
 	"name": "ROS devcontainer for vscode",
 //	"preCreateCommand": "./detect_os.sh",
+	"containerEnv": {
+    "ROS_VERSION": "humble-desktop-full"
+	},
+
 	"dockerComposeFile": [
 		"docker-compose-windows.yml"
 //		"docker-compose-linux.yml"
@@ -9,6 +13,11 @@
 	"service": "workspace",
 	"workspaceFolder": "/workspace",
 	"shutdownAction": "stopCompose",
+//	"build": {
+//      "args": {
+//      "ROS_VERSION": "${containerEnv:ROS_VERSION}"
+//	  }
+	},
 	"customizations": {
 		"vscode": {
 			"extensions": [

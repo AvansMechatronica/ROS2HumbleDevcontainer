@@ -2,14 +2,16 @@ version: '3'
 services:
 
   workspace:
-    # env_file:
-    #   - .env
+    #env_file:
+    #   - ./default.env
     build: 
       context: .
       dockerfile: Dockerfile
       args: 
         BASE_IMAGE: humble-desktop-full
-    image: my-ros-devcontainer-vscode:humble-desktop
+        #${ROS_VERSION}
+    image: avans-ros2:humble-desktop-full
+    #{$ROS_VERSION}
     ipc: host
     security_opt:
     - seccomp:unconfined
