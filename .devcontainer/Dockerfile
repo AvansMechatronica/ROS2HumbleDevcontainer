@@ -18,7 +18,7 @@ RUN apt-get update && apt-get upgrade -y && \
 	dos2unix\
 	#code \
 	#vim-tiny \
-	#iputils-ping \
+	iputils-ping \
 	net-tools \
 	pip
 	#\
@@ -33,7 +33,7 @@ RUN apt-get update && apt-get upgrade -y && \
 RUN apt-get clean
 
 # basic python packages
-RUN pip install --upgrade --ignore-installed --no-cache-dir \
+RUN apt-get update && pip install --upgrade --ignore-installed --no-cache-dir \
 	pyassimp pylint==1.9.4 \
 	autopep8 \
 	python-language-server[all] \
@@ -65,10 +65,10 @@ RUN apt-get install -y \
     lsb-release \
     python3-pip \
     software-properties-common \
-    xfce4 \
-    xfce4-goodies \
-    x11vnc \
-    xvfb \
+    #xfce4 \
+    #xfce4-goodies \
+    #x11vnc \
+    #xvfb \
     supervisor \
     dbus-x11 
 
@@ -108,9 +108,7 @@ RUN apt-get install -y \
 # Uncoment for using UR Robots
 #RUN apt-get install -y ros-$ROS_DISTRO-ur
 
-
 RUN rm -rf /var/lib/apt/lists/*
-
 
 USER developer
 WORKDIR /home/developer
@@ -119,26 +117,26 @@ ENV HOME=/home/developer
 ENV SHELL=/bin/bash
 
 # enable bash completion
-RUN git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it && \
-    ~/.bash_it/install.sh --silent && \
-    rm ~/.bashrc.bak && \
-    echo "source /usr/share/bash-completion/bash_completion" >> ~/.bashrc && \
-    bash -i -c "bash-it enable completion git"
+#removed by Gerard RUN git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it && \
+#removed by Gerard     ~/.bash_it/install.sh --silent && \
+#removed by Gerard     rm ~/.bashrc.bak && \
+#removed by Gerard     echo "source /usr/share/bash-completion/bash_completion" >> ~/.bashrc && \
+#removed by Gerard     bash -i -c "bash-it enable completion git"
 
-RUN echo 'eval "$(register-python-argcomplete sim)"' >> ~/.bashrc
+#removed by Gerard RUN echo 'eval "$(register-python-argcomplete sim)"' >> ~/.bashrc
 
-RUN git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && \
-    ~/.fzf/install --all
+#removed by Gerard RUN git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && \
+#removed by Gerard     ~/.fzf/install --all
 
 #RUN git clone --depth 1 https://github.com/b4b4r07/enhancd.git ~/.enhancd && \
 #    echo "source ~/.enhancd/init.sh" >> ~/.bashrc
 
 # colorize less
-RUN lesspipe >> ~/.bashrc && \
-    echo "export LESS='-R'" >> ~/.bashrc && \
-    echo "export PYGMENTIZE_STYLE='monokai'" >> ~/.bashrc && \
-    curl -sSL https://raw.githubusercontent.com/CoeJoder/lessfilter-pygmentize/master/.lessfilter > ~/.lessfilter && \
-    chmod 755 ~/.lessfilter
+#removed by Gerard RUN lesspipe >> ~/.bashrc && \
+#removed by Gerard     echo "export LESS='-R'" >> ~/.bashrc && \
+#removed by Gerard     echo "export PYGMENTIZE_STYLE='monokai'" >> ~/.bashrc && \
+#removed by Gerard     curl -sSL https://raw.githubusercontent.com/CoeJoder/lessfilter-pygmentize/master/.lessfilter > ~/.lessfilter && \
+#removed by Gerard     chmod 755 ~/.lessfilter
 
 # init rosdep
 RUN rosdep update
@@ -146,7 +144,7 @@ RUN rosdep update
 # enter ROS world
 RUN echo "source /opt/ros/$ROS_DISTRO/setup.bash" >> ~/.bashrc
 
-EXPOSE 3000 8888
+#removed by Gerard EXPOSE 3000 8888
 
 RUN mkdir -p /home/developer/installers
 COPY installers /home/developer/installers
