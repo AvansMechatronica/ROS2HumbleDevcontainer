@@ -16,21 +16,10 @@ RUN apt-get update && apt-get upgrade -y && \
 	language-pack-en \
 	nano \
 	dos2unix\
-	#code \
-	#vim-tiny \
 	iputils-ping \
 	net-tools \
 	pip
-	#\
-	#openssh-client \
-	#openjdk-8-jdk-headless \
-	#nodejs \
-	#imagemagick \
-	#byzanz \
-	#python-dev \
-	#libsecret-1-dev && \
-    #npm install -g yarn && \
-RUN apt-get clean
+
 
 # basic python packages
 RUN apt-get update && pip install --upgrade --ignore-installed --no-cache-dir \
@@ -46,8 +35,6 @@ RUN apt-get update && pip install --upgrade --ignore-installed --no-cache-dir \
 	supervisor \
 	supervisor_twiddler \
 	argcomplete 
-
-
 
 # add non-root user
 RUN useradd -m developer && \
@@ -65,10 +52,6 @@ RUN apt-get install -y \
     lsb-release \
     python3-pip \
     software-properties-common \
-    #xfce4 \
-    #xfce4-goodies \
-    #x11vnc \
-    #xvfb \
     supervisor \
     dbus-x11 
 
@@ -116,35 +99,11 @@ WORKDIR /home/developer
 ENV HOME=/home/developer
 ENV SHELL=/bin/bash
 
-# enable bash completion
-#removed by Gerard RUN git clone --depth=1 https://github.com/Bash-it/bash-it.git ~/.bash_it && \
-#removed by Gerard     ~/.bash_it/install.sh --silent && \
-#removed by Gerard     rm ~/.bashrc.bak && \
-#removed by Gerard     echo "source /usr/share/bash-completion/bash_completion" >> ~/.bashrc && \
-#removed by Gerard     bash -i -c "bash-it enable completion git"
-
-#removed by Gerard RUN echo 'eval "$(register-python-argcomplete sim)"' >> ~/.bashrc
-
-#removed by Gerard RUN git clone --depth 1 https://github.com/junegunn/fzf.git ~/.fzf && \
-#removed by Gerard     ~/.fzf/install --all
-
-#RUN git clone --depth 1 https://github.com/b4b4r07/enhancd.git ~/.enhancd && \
-#    echo "source ~/.enhancd/init.sh" >> ~/.bashrc
-
-# colorize less
-#removed by Gerard RUN lesspipe >> ~/.bashrc && \
-#removed by Gerard     echo "export LESS='-R'" >> ~/.bashrc && \
-#removed by Gerard     echo "export PYGMENTIZE_STYLE='monokai'" >> ~/.bashrc && \
-#removed by Gerard     curl -sSL https://raw.githubusercontent.com/CoeJoder/lessfilter-pygmentize/master/.lessfilter > ~/.lessfilter && \
-#removed by Gerard     chmod 755 ~/.lessfilter
-
 # init rosdep
 RUN rosdep update
 
 # enter ROS world
 RUN echo "source /opt/ros/$ROS_DISTRO/setup.bash" >> ~/.bashrc
-
-#removed by Gerard EXPOSE 3000 8888
 
 RUN mkdir -p /home/developer/installers
 COPY installers /home/developer/installers
