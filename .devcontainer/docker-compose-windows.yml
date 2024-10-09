@@ -9,9 +9,7 @@ services:
       dockerfile: Dockerfile
       args: 
         BASE_IMAGE: humble-desktop-full
-        #${ROS_VERSION}
     image: avans-ros2:humble-desktop-full
-    #{$ROS_VERSION}
     ipc: host
     security_opt:
     - seccomp:unconfined

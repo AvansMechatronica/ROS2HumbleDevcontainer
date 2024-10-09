@@ -1,6 +1,5 @@
 {
 	"name": "ROS devcontainer for vscode",
-//	"preCreateCommand": "./detect_os.sh",
 	"containerEnv": {
     "ROS_VERSION": "humble-desktop-full"
 	},
@@ -9,14 +8,9 @@
 		"docker-compose-windows.yml"
 //		"docker-compose-linux.yml"
 	],
-//	"postCreateCommand": "docker buildx use default",
 	"service": "workspace",
 	"workspaceFolder": "/workspace",
 	"shutdownAction": "stopCompose",
-//	"build": {
-//      "args": {
-//      "ROS_VERSION": "${containerEnv:ROS_VERSION}"
-//	  }
 	},
 	"customizations": {
 		"vscode": {
@@ -28,9 +22,5 @@
 			]
 		}		
 	}
-//	"mounts": [
-//        "source=/tmp/.X11-unix,target=/tmp/.X11-unix,type=bind,consistency=cached"
-//      ],
-    //"appPort": [80],
 
 }

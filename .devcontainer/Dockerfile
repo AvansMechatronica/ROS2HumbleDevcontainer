@@ -36,6 +36,11 @@ RUN apt-get update && pip install --upgrade --ignore-installed --no-cache-dir \
 	supervisor_twiddler \
 	argcomplete 
 
+#RUN apt install -y \
+#	python3-colcon-common-extensions
+
+RUN sudo apt -y install python3-venv
+
 # add non-root user
 RUN useradd -m developer && \
     echo developer ALL=\(root\) NOPASSWD:ALL > /etc/sudoers.d/developer && \
