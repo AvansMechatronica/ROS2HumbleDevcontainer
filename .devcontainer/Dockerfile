@@ -82,7 +82,10 @@ RUN apt-get install -y \
     ros-$ROS_DISTRO-control-toolbox \
     ros-$ROS_DISTRO-controller-manager \
     ros-$ROS_DISTRO-desktop \
-    ros-$ROS_DISTRO-moveit-servo 
+    ros-$ROS_DISTRO-moveit-servo \
+	ros-$ROS_DISTRO-tf-transformations
+	
+	
 #Add own ROS Packeges here
 
 RUN curl -sSL http://get.gazebosim.org | sh
